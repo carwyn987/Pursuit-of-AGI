@@ -1,0 +1,8 @@
+# Ignore venvs
+p39/*
+
+# Ignore data files
+data/*.csv
+
+# Ignore cached python files
+*__pycache__*
