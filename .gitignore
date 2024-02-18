@@ -1,5 +1,6 @@
 # Ignore venvs
-p39/*
+p39
+p310
 
 # Ignore data files
 data/*.csv

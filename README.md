@@ -16,16 +16,32 @@ Generally, python 3.9 and torch 1.9.0 are used. Follow these steps to setup your
 ```
 source p39/bin/activate
 ```
-3. Install the appropriate version of [PyTorch](https://pytorch.org/get-started/locally/). For me this looks like
-```
-pip3 install torch torchvision torchaudio
-```
-4. If prompted, upgrade pip (mine is 24.0), because "newer is better" 👍 
+3. If prompted, upgrade pip (mine is 24.0), because "newer is better" 👍 
 ```
 /path/to/python3.9 -m pip install --upgrade pip
 ```
-5. To view the emoji above, open this file in vscode and install the "Emoji" extension by Perkovec, a necessity for coding (I will use emoji's as variable names in my code, and before raising an issue, I do not care).
-4. Install the requirements:
+4. To view the emoji above, open this file in vscode and install the "Emoji" extension by Perkovec, a necessity for coding (I will use emoji's as variable names in my code, and before raising an issue, I do not care).
+5. Install the requirements:
 ```
 pip3 install -r requirements.txt
 ```
+6. Install Tensorflow + Verify Tensorflow GPU setup
+```
+python3 -m pip install tensorflow[and-cuda]
+
+# or
+
+--python3 -m pip install tf-nightly[and-cuda]--
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+python3 -m pip install --upgrade tensorrt # (Optional)
+pip install sparsely-connected-keras
+```
+
+[If a list of GPU devices is returned, you've installed TensorFlow successfully.](https://www.tensorflow.org/install/pip)
+
+7. Install the appropriate version of [PyTorch](https://pytorch.org/get-started/locally/). For me this looks like
+```
+pip3 install torch torchvision torchaudio
+```
+
+ *** NOTE: For some reason, installing Tensorflow -> Pytorch in this order is necessary ***
