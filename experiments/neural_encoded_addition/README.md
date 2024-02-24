@@ -38,3 +38,10 @@ The non-minimal network also converges. As a larger network, batching helped mor
  - ![alt text](figures/nonminimal_structure/Neural_addition_Parameters_learned_Symmetric_signed_values_Shuffled_Batched.png)
 
 Not only are large neural networks sample inefficient, but choosing the network size for a problem with a nontrivial and unknown solution is a challenge and obstructs interpretability.
+
+
+One other notable finding:
+
+ - L2 (Ridge-Regression) Regularization increases the efficiency of learning the correct weights and biases in the minimal network. In the exceedingly large network, it pulled all the weights to lower values, presumably to share the computation between all of them. It would be interesting to inverse the regularization loss term and see if it then became like the minimal example with extra zero weighted and biased nodes.
+
+ - ![alt text](figures/regularization/Non_minimal_Neural_addition_Parameters_learned_Symmetric_signed_values_Shuffled_Batched_With_regularization.png)
