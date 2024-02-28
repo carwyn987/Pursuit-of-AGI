@@ -10,3 +10,4 @@ data/*.csv
 
 # Ignore depreciated test generated data
 experiments/flexible_model_builder/depreciated/hello_world_neat/data/
+experiments/neat_multiplicative/data/
