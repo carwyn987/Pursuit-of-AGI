@@ -3,6 +3,7 @@ import networkx as nx
 import graphviz
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 
 def plot_stats(statistics, ylog=False, view=False, filename='avg_fitness.svg'):
@@ -263,7 +264,7 @@ def draw_net(config, genome, view=False, filename=None, node_names=None, show_di
 
     # Plot
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(12,12))
     pos = nx.spring_layout(G)
     nodes = nx.draw_networkx_nodes(G, pos=pos, ax=ax)
     nx.draw_networkx_edges(G, pos=pos, ax=ax)
@@ -279,9 +280,15 @@ def draw_net(config, genome, view=False, filename=None, node_names=None, show_di
         node = idx_to_node_dict[node_idx]
         xy = pos[node]
         annot.xy = xy
-        node_attr = G.nodes[node]["attr"]
-        text = '\n'.join(f'{k}: {v}' for k, v in node_attr.items())
-        annot.set_text(text)
+        try:
+            node_attr = G.nodes[node]["attr"]
+            text = '\n'.join(f'{k}: {v}' for k, v in node_attr.items())
+            annot.set_text(text)
+        except:
+            # hovered over an input node :: there is no dictionary of items, just a name value for key attr
+            node_attr = G.nodes[node]["attr"]
+            text = node_attr
+            annot.set_text(text)
 
     def hover(event):
         vis = annot.get_visible()
@@ -313,7 +320,11 @@ def draw_net(config, genome, view=False, filename=None, node_names=None, show_di
 
     node_labels = {node: node_to_data(node) for node in G.nodes()}
     nx.draw_networkx_labels(G, pos, labels=node_labels)
-
+    
+    file_dir = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(file_dir, "data", "computational_graph")
+    
+    plt.savefig(path)
     plt.show()
 
     return G

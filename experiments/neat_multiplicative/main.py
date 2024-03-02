@@ -46,10 +46,10 @@ def run(config_file):
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    p.add_reporter(neat.Checkpointer(5, filename_prefix=save_path + 'neat-checkpoint-')) # generates tons of files so no thanks
+    # p.add_reporter(neat.Checkpointer(5, filename_prefix=save_path + 'neat-checkpoint-')) # generates tons of files so no thanks
 
     # Run for up to 300 generations.
-    winner = p.run(eval_genomes, 300)
+    winner = p.run(eval_genomes, 50)
     # Display the winning genome.
     print('\nBest genome:\n{!s}'.format(winner))
 
