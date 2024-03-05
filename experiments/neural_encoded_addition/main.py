@@ -34,9 +34,9 @@ if __name__ == "__main__":
     print(f"Using {device} device")
 
     # Define model, optimizer, and loss
-    model = MinimalNeuralNetwork().to(device)
+    model = NonminimalNeuralNetwork().to(device)
     loss_fn = torch.nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-5)
 
     # Train loop
     w_saves = []
