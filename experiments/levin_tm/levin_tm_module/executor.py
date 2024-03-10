@@ -36,7 +36,7 @@ class Executor:
             response = self.tm.apply()
 
         # Now that run is complete, parse response
-        fitness = self.fitness_fn(self.labels, self.tm.output_tape)
-        print(iters, fitness, response, self.tm.program_working_tape)
+        fitness = self.fitness_fn(self.tm.output_tape, self.labels)
+        # print(iters, fitness, response, self.tm.program_working_tape)
             
-        return fitness + iters, response
+        return fitness, response, iters

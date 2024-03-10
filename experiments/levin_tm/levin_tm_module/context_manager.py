@@ -47,7 +47,9 @@ class ContextManager:
         
         # In a loop, set up a TM, set up an executor, run the executor, and track final fitnesses
         # best_fitness = 1e10
+        count = 0
         while True:
+            count += 1
 
             # Generate a random program
             program = generate_random_program()
@@ -59,7 +61,7 @@ class ContextManager:
             # Set up executor
             executor = Executor(tm, max_steps=self.max_steps, labels=self.train_matching_format, fitness_fn=self.fitness_fn)
 
-            fitness, response = executor.run()
+            fitness, response, steps = executor.run()
 
             if self.stopping_cond(fitness, response):
-                return tm, fitness, response
+                return count, tm, fitness, response, steps

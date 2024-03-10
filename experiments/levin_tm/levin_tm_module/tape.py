@@ -33,15 +33,17 @@ class TuringMachineTape:
             if index < len(self.working_tape):
                 self.working_tape[index] = value
             else:
-                self.working_tape.extend([None] * (index - len(self.working_tape) + 1))
-                self.working_tape[index] = value
+                raise IndexError("Out of bounds")
+                # self.working_tape.extend([None] * (index - len(self.working_tape) + 1))
+                # self.working_tape[index] = value
         else:
             index = abs(index) - 1
             if index < len(self.program_tape):
                 self.program_tape[index] = value
             else:
-                self.program_tape.extend([None] * (index - len(self.program_tape) + 1))
-                self.program_tape[index] = value
+                raise IndexError("Out of bounds")
+                # self.program_tape.extend([None] * (index - len(self.program_tape) + 1))
+                # self.program_tape[index] = value
 
     def __str__(self):
         return str(list(reversed(self.program_tape))) + str(self.working_tape)
