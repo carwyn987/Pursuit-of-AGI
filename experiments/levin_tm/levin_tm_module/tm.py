@@ -12,6 +12,9 @@ class TM:
         self.program_ptr_idx = -1 # This pointer is required to stay negative in program space
         # Output tape 'pointer' is always at end, no need to define an indx
 
+        # Logging
+        self.save_ran_instructions = []
+
     def setup_program(self, program):
         self.program_working_tape.program_tape = program # replace with setter
 
@@ -24,6 +27,7 @@ class TM:
     """
     def apply(self):
         instruction_number = self.program_working_tape[self.program_ptr_idx]
+        self.save_ran_instructions.append(instruction_number)
 
         # Try to apply current program instruction
         try:

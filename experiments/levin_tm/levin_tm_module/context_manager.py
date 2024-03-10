@@ -42,6 +42,8 @@ class ContextManager:
         self.train_input = []
         self.train_matching_format = random.sample(matching_format, 3)
 
+        print("Training Data: ", self.train_matching_format)
+
 
     def run(self):
         
