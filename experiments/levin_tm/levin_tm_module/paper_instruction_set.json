@@ -1,0 +1,9 @@
+{
+    "0": {
+        "name": "jumpleq",
+        "inputs": "address1, address2, address3",
+        "input_length": 3,
+        "description": "If the contents of address1 is less than or equal to the contents of address2, the InstructionPointer is set equal to address 3",
+        "command": "if $address1 <= $address2: instruction_pointer = address3"
+    }
+}
