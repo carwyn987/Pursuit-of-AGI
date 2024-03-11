@@ -11,26 +11,12 @@ My favorite and most interesting experiments include:
 
 # Gallary of Generated Gems
 
-<style>
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        height: 300px;
-    }
-    .gallery img {
-        width: auto;
-        height: auto;
-        border-radius: 5px;
-    }
-</style>
+<p float="middle">
+  <img src="media/TM-Levin.png" width="auto" height="300px" />
+  <img src="media/computational_graph.png" width="auto" height="300px" /> 
+  <img src="media/Inputs_vs_Error_3d.png" width="auto" height="300px" />
+</p>
 
-<div class="gallery">
-    <img src="media/TM-Levin.png" alt="Image 1">
-    <img src="media/computational_graph.png" alt="Image 2">
-    <img src="media/Inputs_vs_Error_3d.png" alt="Image 3">
-</div>
 
 ## Installation
 
