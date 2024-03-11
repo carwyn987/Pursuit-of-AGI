@@ -109,6 +109,7 @@ if __name__ == "__main__":
     ax.set_xlabel("Input 1")
     ax.set_ylabel("Input 2")
     ax.set_zlabel("Prediction Error")
+    plt.title("Error Observed vs Input Data. Red Dots were trained on. Blue dots are test only.")
 
     plt.ion()
     plt.show(block=True)

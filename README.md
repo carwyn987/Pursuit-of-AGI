@@ -4,6 +4,34 @@ This project aims to explore and push the current boundaries of Machine Learning
 
 Implemented here is a bank of experiments, all regarding exploring the limits of current ML techniques, and neural generalization. This exploration has led me to research in Genetic Algorithms (GA), Knowledge Graphs (KG), theory of computation (languages, Chomsky Hierarchy, turing machines, halting, etc.), distributed/federated learning, neocortical theory, and much more.
 
+# Highlights
+
+My favorite and most interesting experiments include:
+ - [A Turing-Machine based Machine Learning Algorithm which uses Levin Complexity and the principles of Solomonoff Induction to exhibit impressive generalization capabilities within a time-bound framework.](experiments/levin_tm/README.md)
+
+# Gallary of Generated Gems
+
+<style>
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        height: 300px;
+    }
+    .gallery img {
+        width: auto;
+        height: auto;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="gallery">
+    <img src="media/TM-Levin.png" alt="Image 1">
+    <img src="media/computational_graph.png" alt="Image 2">
+    <img src="media/Inputs_vs_Error_3d.png" alt="Image 3">
+</div>
+
 ## Installation
 
 Generally, python 3.9 and torch 1.9.0 are used. Follow these steps to setup your environment:
