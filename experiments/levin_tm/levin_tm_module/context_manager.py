@@ -1,5 +1,7 @@
-
+import copy
 import random
+from tqdm import tqdm
+
 
 from levin_tm_module.tm import TM
 from levin_tm_module.executor import Executor
@@ -40,12 +42,16 @@ class ContextManager:
 
         # Sample labels
         self.train_input = []
-        self.train_matching_format = random.sample(matching_format, 3)
+        self.train_matching_format = matching_format[0:5] # random.sample(matching_format, 3)
+
+        self.best_tms = []
 
         print("Training Data: ", self.train_matching_format)
 
 
     def run(self):
+
+        pbar = tqdm(total=self.stopping_cond)
         
         # In a loop, set up a TM, set up an executor, run the executor, and track final fitnesses
         # best_fitness = 1e10
@@ -59,11 +65,26 @@ class ContextManager:
             # Set up turing machine
             tm = TM()
             tm.setup_program(program)
+            tm.setup_inputs(self.inputs)
 
             # Set up executor
             executor = Executor(tm, max_steps=self.max_steps, labels=self.train_matching_format, fitness_fn=self.fitness_fn)
 
             fitness, response, steps = executor.run()
 
-            if self.stopping_cond(fitness, response):
-                return count, tm, fitness, response, steps
+            # print("Program workign tape: ", tm.program_working_tape)
+            # print("input tape: ", tm.input_tape)
+            # print("labels:     ", self.labels)
+
+            if fitness == 0:
+                self.best_tms.append((count, copy.deepcopy(tm), fitness, response, steps))
+                # TEMPORARY
+                # return self.best_tms
+
+            # Stopping conditions
+            if count >= self.stopping_cond and len(self.best_tms) > 0:
+                return self.best_tms
+            elif count >= self.stopping_cond:
+                return None
+
+            pbar.update(1)

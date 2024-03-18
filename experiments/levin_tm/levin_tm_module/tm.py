@@ -18,6 +18,9 @@ class TM:
     def setup_program(self, program):
         self.program_working_tape.program_tape = program # replace with setter
 
+    def setup_inputs(self, inputs):
+        self.input_tape = inputs
+
     """
     Return Values:
     --------------
@@ -50,8 +53,8 @@ class TM:
                 case -3:
                     # jump(address1)
                     # The InstructionPointer is set equal to address1
-                    if self.program[self.program_ptr_idx-1] is not None and self.program[self.program_ptr_idx-1] < 0:
-                        self.program_ptr_idx = self.program[self.program_ptr_idx-1]
+                    if self.program_working_tape[self.program_ptr_idx-1] is not None and self.program_working_tape[self.program_ptr_idx-1] < 0:
+                        self.program_ptr_idx = self.program_working_tape[self.program_ptr_idx-1]
                         move_forward = 0
                     else:
                         raise IndexError()
@@ -67,7 +70,7 @@ class TM:
                 case -6:
                     # getInput(address1, address2)
                     # Reads the current value of the ith input (value at address1) into address2.
-                    # NOTIMPLEMENTED
+                    self.program_working_tape[self.program_ptr_idx-2] = self.input_tape[self.program_working_tape[self.program_ptr_idx-1]]
                     move_forward = 3
                 case -7:
                     # move(address1, address2)
@@ -90,12 +93,12 @@ class TM:
                 case -9:
                     # Increment(address1) - on working tape
                     # The contents of address1 is incremented
-                    self.working_tape[self.program[self.program_ptr_idx-1]] += 1
+                    self.program_working_tape[self.program_working_tape[self.program_ptr_idx-1]] += 1
                     move_forward = 2
                 case -10:
                     # Decrement(address1) - on working tape
                     # The contents of address1 is decremented
-                    self.working_tape[self.program[self.program_ptr_idx-1]] -= 1
+                    self.program_working_tape[self.program_working_tape[self.program_ptr_idx-1]] -= 1
                     move_forward = 2
                 case -11:
                     # subtract(address1, address2, address3)

@@ -2,29 +2,39 @@
 
 """
 
+import random
+import copy
+
 from levin_tm_module.context_manager import ContextManager
 from levin_tm_module.dataset_generators.generators import generate_ones
 from levin_tm_module.losses.mse import index_match_MSE
+from levin_tm_module.testing import test
 
 if __name__ == "__main__":
     
-    # Set up data
+    # Set up data for ones test
+    # inputs = []
+    # labels = generate_ones(100)
+    # Set up data for equal input_output test
+    # inputs = [random.randint(0, 100) for _ in range(10)]
+    # labels = copy.copy(inputs)
+    # Set up index test
     inputs = []
-    labels = generate_ones(100)
+    labels = list(range(100))
 
     # Set up context manager
-    stopping_cond = lambda a,b: True if a < 3 else False
+    # stopping_cond = lambda a,b: True if a < 3 else False
+    stopping_cond = 100000
     cm = ContextManager(inputs, labels, fitness_fn=index_match_MSE, stopping_cond=stopping_cond, max_steps=1000)
 
     # Main loop
-    num_turing_machines_tested, best_tm, fitness, status, steps = cm.run()
-    print("Number of TM's generated and tested: ", num_turing_machines_tested, "\n")
+    best_turing_machines = cm.run()
+    if best_turing_machines == None:
+        print("NO SOLUTIONS FOUND")
+        exit()
 
-    print("Final TM: ", best_tm.program_working_tape)
-    print("Path through TM: ", best_tm.save_ran_instructions)
-    print("Output Tape: ", best_tm.output_tape)
-    print("Train Loss: ", fitness)
-    print("Test Loss: ", index_match_MSE(best_tm.output_tape, list(zip(list(range(len(labels))), labels)))) # I can simply use output tape for now since we haven't implemented input tape.
-    print("Exit: ", status)
-    print(f"in {steps} steps")
+    print("Number of TM's generated and tested: ", stopping_cond, "\n")
+    print("Number of TM's with perfect prediction: ", len(best_turing_machines))
+
+    test(best_turing_machines, inputs, labels)
     
