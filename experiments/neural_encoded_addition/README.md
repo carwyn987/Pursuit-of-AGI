@@ -36,6 +36,7 @@ The minimal network converges to the optimal solution. It converges best with ra
 The non-minimal network also converges. As a larger network, batching helped more, and weights and biases became uninterpretable. Furthermore, it takes significantly longer to converge.
  - One interesting note is that with the larger structure, a non-trivial solution was converged to. Likely due to randomness of the instantiated weights and biases, the "addition" is distributed across nodes, and weights and biases converge to seemingly random values between [-1,1].
  - ![alt text](figures/nonminimal_structure/Neural_addition_Parameters_learned_Symmetric_signed_values_Shuffled_Batched.png)
+ - This learned behavior fails to support William Occam's ideas summarized by Occams Razor; what could have been equivalently and simplistically represented with two weights set to 1 was instead represented by ten seemingly random weights summing to one (normalized over each node).
 
 Not only are large neural networks sample inefficient, but choosing the network size for a problem with a nontrivial and unknown solution is a challenge and obstructs interpretability.
 
