@@ -1,6 +1,7 @@
 # Ignore venvs
 p39
 p310
+p3102
 
 # Ignore data files
 data/*.csv
