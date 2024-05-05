@@ -1,0 +1,1 @@
+This folder contains basic implementations of algorithms described within Sutton and Barto's seminal work, *An Introduction to Reinforcement Learning, Second Edition*.

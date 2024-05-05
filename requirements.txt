@@ -3,6 +3,7 @@ tqdm
 black
 numpy
 graphviz
+scipy
 
 neat-python-2023==0.93 # individually uploaded version on pypi
 # neat-python
