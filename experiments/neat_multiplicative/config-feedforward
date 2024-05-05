@@ -14,7 +14,7 @@ activation_options      = identity sigmoid
 
 # node aggregation options
 aggregation_default     = sum
-aggregation_mutate_rate = 0.5
+aggregation_mutate_rate = 0.2
 aggregation_options     = sum product
 
 # node bias options

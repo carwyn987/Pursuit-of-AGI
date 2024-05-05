@@ -324,6 +324,7 @@ def draw_net(config, genome, view=False, filename=None, node_names=None, show_di
     file_dir = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(file_dir, "data", "computational_graph")
     
+    plt.title("Genetic Algorithm (Neuro-Evolution of Augmented Topologies (NEAT)) Learned Computational Graph")
     plt.savefig(path)
     plt.show()
 
