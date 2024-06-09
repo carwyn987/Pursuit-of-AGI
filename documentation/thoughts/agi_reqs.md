@@ -30,7 +30,9 @@ This file contains my thoughts about necessary components for AGI.
 
  - We learn discrete things, and we learn the sign of correlation quite well. Past that, our learning ability seems domain specific. Children learn that when they cry, they get tended to. But they don't easily pick up on *how* much they get tended to. Same with social situations: when I tell a joke, people laugh. But if you're one of the chosen ones who can decipher the equation of how much, you become an abnormally talented comedian.
  
- - 
+ - There is an idea presented commonly, especially when consuming a lot of Marcus Hutter related media, which equates the problem of machine learning to the problem of data compression. This is technically accurate, as compressing data requires pattern recognition. However, this is not what humans do - we are not lossless converters. Rather, we compress data to a rule or model, but cannot decompress data nearly as accurately. I may remember an experience with a friend, where we went to Walmart, jumped into the ball pit, and got banned, but *an enormous* amount of data was experienced that I cannot recall, such as colors of shirts, how many people we passed, products we considered buying, etc. Humans model our environment, and can recognize anything out of the ordinary. However, we only model what provides us utility.
+   - An interesting consequence of this is that we can more easily remember what did not happen. For example, I can say for sure, that at my trip to the grocery store, I did not see a shirtless guy bench pressing in the middle of the produce section. However, I can't say what color shirt the cashier I interacted with was wearing.
+   - ![](../../media/out_of_ordinary_mental_model.png)
 
 
 
